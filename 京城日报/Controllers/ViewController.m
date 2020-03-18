@@ -142,6 +142,7 @@ static NSString *listCellReuseId = @"kListCell";
     UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
     imgView.frame = CGRectMake(0, 0, 66, 66);
     cell.accessoryView = imgView;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //返回UITableViewCell对象
     
     //TODO: 这里准备做替换
