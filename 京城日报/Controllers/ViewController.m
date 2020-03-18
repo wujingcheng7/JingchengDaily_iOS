@@ -20,11 +20,13 @@ static NSString *listCellReuseId = @"kListCell";
 @property (nonatomic, strong) UITableView *thisTableView;
 @property (nonatomic, strong) UIView *toolbar;
 @property (nonatomic, copy) NSArray *sclViewTitles;
-@property (nonatomic, strong) NSArray *sclViewWebUrls;
+@property (nonatomic, copy) NSArray *sclViewWebUrls;
 @property (nonatomic, strong) NSMutableArray<UIButton*> *sclViewBtns;
 @property (nonatomic, copy) NSArray *tabViewTitles;
 @property (nonatomic, copy) NSArray *tabViewAuthors;
 @property (nonatomic, copy) NSArray *tabViewWebUrls;
+@property (nonatomic, strong) UIImageView *cheatingImgView;//用于视觉欺骗的图片
+@property (nonatomic, strong) UILabel *cheatingLabelView;//用于视觉欺骗的文字
     //TODO: 这里准备做替换
 //@property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -45,6 +47,7 @@ static NSString *listCellReuseId = @"kListCell";
     [self initSomeTmpData];//init展示需要的数据
     [self initThisTableView];//init TableView (包含ScrollView)
     [self initToolbar];
+    [self initCheatingThings];//欺骗性内容，用于图片拉伸
 }
 #pragma mark - tableViewDelegate相关方法⬇️
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{//设置indexPath行的高度,indexPath包含section和row
@@ -77,12 +80,28 @@ static NSString *listCellReuseId = @"kListCell";
         CGFloat bigWidth = tableview.frame.size.width;//tableview的X长度
         CGFloat offsetX = scV.contentOffset.x;//scrollview 的offset x
         NSInteger i = (NSInteger)(offsetX)/(NSInteger)(bigWidth);// scrollview 的图片序号，从0开始
-        UIImageView* imgView = scV.subviews[i].subviews[0];//scrollview的图片
-        CGPoint center = imgView.center;
+//        UIImageView* imgView = scV.subviews[i].subviews[0];//scrollview的图片
+//        CGPoint center = imgView.center;
         if (offsetY<0) {
-            CGFloat scale = (bigWidth-offsetY)/bigWidth;
-            imgView.transform = CGAffineTransformMakeScale(scale, scale);
-            imgView.center = center;
+//            CGFloat scale = (bigWidth-offsetY)/bigWidth;
+//            imgView.transform = CGAffineTransformMakeScale(scale, scale);
+//            imgView.center = center;
+            self.cheatingImgView.frame = CGRectMake(0+offsetY/2,106,bigWidth-offsetY,bigWidth-offsetY);
+            if(self.cheatingImgView.tag){
+                [self.cheatingImgView setImage:[UIImage imageNamed:[NSString stringWithFormat: @"scroll_%ld.jpg",i]]];
+                self.cheatingImgView.tag = 0;
+            }
+            self.cheatingLabelView.frame = CGRectMake(20, 406-offsetY, bigWidth, 70);
+            if (self.cheatingLabelView.tag) {
+                self.cheatingLabelView.text = self.sclViewTitles[i];
+                self.cheatingLabelView.tag = 0;
+            }
+        }else{//offsetY>=0
+            [self.cheatingImgView setImage:nil];
+            self.cheatingImgView.frame = CGRectMake(0, 0, 0, 0 );
+            self.cheatingLabelView.frame = CGRectMake(0, 0, 0, 0);
+            self.cheatingImgView.tag = 1;
+            self.cheatingLabelView.tag =1;
         }
     }
 }
@@ -198,8 +217,9 @@ static NSString *listCellReuseId = @"kListCell";
     self.sclViewBtns[number] =btn;
     
     //添加标题,与图片绑定
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(20, 300+0, widthAndHeight, 40)];
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(20, 300+0, widthAndHeight, 70)];
     label.text = title;
+    label.numberOfLines = 2;
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"Courier New" size:18.0f];
     [view addSubview:label];
@@ -335,6 +355,17 @@ static NSString *listCellReuseId = @"kListCell";
     [self.toolbar addSubview:self.userImageButton];
     //头像添加点击事件
     [self.userImageButton addTarget:self action:@selector(gotoLoginPage:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)initCheatingThings{
+    self.cheatingLabelView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.cheatingImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.cheatingLabelView.font = [UIFont fontWithName:@"Courier New" size:18.0f];;
+    self.cheatingLabelView.textColor = [UIColor whiteColor];
+    self.cheatingLabelView.numberOfLines = 2;
+    self.cheatingImgView.tag = 1;
+    self.cheatingImgView.tag = 1;
+    [self.view addSubview:self.cheatingImgView];
+    [self.view addSubview:self.cheatingLabelView];
 }
 @end
 
