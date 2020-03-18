@@ -163,6 +163,14 @@ static NSString *listCellReuseId = @"kListCell";
 //        make.bottom.equalTo(self.view);
 //    }];
     self.thisTableView = tableViewPtr;
+    [self.thisTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.thisTableView.backgroundColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+        if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            return [UIColor blackColor];
+        }else{
+            return [UIColor whiteColor];
+        }
+    }];
     self.thisTableView.delegate = self;
     self.thisTableView.dataSource = self;
     [self.view addSubview:self.thisTableView];
