@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MIv-hv-dik">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="6A0-ZQ-yCa">
+            <objects>
+                <navigationController id="MIv-hv-dik" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BlO-j2-1cU">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2Xe-33-cCe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0EO-4y-aKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-479" y="-280"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2gZ-mj-xPu"/>
+                    <connections>
+                        <segue destination="PBa-9k-uDf" kind="push" id="e4E-4a-CoD"/>
+                        <segue destination="k6E-Cp-vlO" kind="push" id="WoW-M0-T9z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="-281"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="TQq-cQ-F16">
+            <objects>
+                <viewController id="PBa-9k-uDf" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a04-ba-kQn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录京城日报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZB-6A-GPa">
+                                <rect key="frame" x="0.0" y="328" width="375" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择登录方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyv-U3-nwH">
+                                <rect key="frame" x="0.0" y="367" width="375" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jyv-U3-nwH" firstAttribute="top" secondItem="OZB-6A-GPa" secondAttribute="bottom" constant="10" id="c2W-19-83G"/>
+                            <constraint firstItem="4ze-nq-gT8" firstAttribute="trailing" secondItem="Jyv-U3-nwH" secondAttribute="trailing" id="cHU-j3-in4"/>
+                            <constraint firstItem="4ze-nq-gT8" firstAttribute="trailing" secondItem="OZB-6A-GPa" secondAttribute="trailing" id="hVa-47-pRX"/>
+                            <constraint firstItem="Jyv-U3-nwH" firstAttribute="leading" secondItem="4ze-nq-gT8" secondAttribute="leading" id="i48-dD-Z0o"/>
+                            <constraint firstItem="OZB-6A-GPa" firstAttribute="leading" secondItem="4ze-nq-gT8" secondAttribute="leading" id="lxG-b0-fmH"/>
+                            <constraint firstItem="OZB-6A-GPa" firstAttribute="top" secondItem="4ze-nq-gT8" secondAttribute="top" constant="240" id="qmK-o2-tUx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4ze-nq-gT8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Txw-8S-bBs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5fo-6n-ce9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2082.4000000000001" y="-641.37931034482756"/>
+        </scene>
+        <!--Article Page Controller-->
+        <scene sceneID="OFu-NK-23Y">
+            <objects>
+                <viewController id="k6E-Cp-vlO" customClass="ArticlePageController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlm-fs-2Z1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BJV-8G-BlF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8et-7P-lUm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JzU-08-tw6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2071.0144927536235" y="120.53571428571428"/>
+        </scene>
+    </scenes>
+</document>
