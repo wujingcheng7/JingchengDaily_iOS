@@ -88,7 +88,7 @@
     [_settingBtn addTarget:self action:@selector(clickedButtonIs:) forControlEvents:UIControlEventTouchUpInside];
     
     self.view.backgroundColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
-        UIColor *color = (self.daynightBtn.tag==0)?[UIColor whiteColor]:[UIColor grayColor];
+        UIColor *color = (self.daynightBtn.tag==0)?[UIColor whiteColor]:[UIColor darkGrayColor];
         return color;
     }];
 }
@@ -121,8 +121,8 @@
         }else{//若为0则代表已经是白天模式，下面转化为黑暗模式
             [_daynightBtn setImage:[UIImage imageNamed:@"sun.png"] forState:UIControlStateNormal];
             [_daynightBtn setTag:1];
-            self.view.backgroundColor = [UIColor grayColor];
-            self.protocolText.backgroundColor = [UIColor grayColor];
+            self.view.backgroundColor = [UIColor darkGrayColor];
+            self.protocolText.backgroundColor = [UIColor darkGrayColor];
         }
     }else if (what == _settingBtn){
         SettingPageController *p = [[SettingPageController alloc]init];
