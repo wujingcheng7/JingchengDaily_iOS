@@ -60,6 +60,8 @@
 		6D65BE81242089E600EA38C8 /* SettingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE80242089E600EA38C8 /* SettingPageController.m */; };
 		6D65BE852421FBB600EA38C8 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE842421FBB600EA38C8 /* ListModel.m */; };
 		6D65BE882421FC3800EA38C8 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE872421FC3800EA38C8 /* ListCell.m */; };
+		6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */; };
+		6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,10 @@
 		6D65BE842421FBB600EA38C8 /* ListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
 		6D65BE862421FC3800EA38C8 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		6D65BE872421FC3800EA38C8 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_FirstSection.h; sourceTree = "<group>"; };
+		6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell_FirstSection.m; sourceTree = "<group>"; };
+		6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_FirstSection.h; sourceTree = "<group>"; };
+		6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel_FirstSection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,7 @@
 				6D65BE01241FB79C00EA38C8 /* Main.storyboard */,
 				6D65BE04241FB79C00EA38C8 /* ____.xcdatamodeld */,
 				6D65BE6D241FCD1400EA38C8 /* Controllers */,
+				6DDD967524230C6F003CF93C /* UITableViewReuse */,
 				6D65BE17241FB9D200EA38C8 /* Masonry */,
 				6D65BE16241FB9A700EA38C8 /* ImageSources */,
 			);
@@ -278,6 +285,17 @@
 				6D65BE872421FC3800EA38C8 /* ListCell.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6DDD967524230C6F003CF93C /* UITableViewReuse */ = {
+			isa = PBXGroup;
+			children = (
+				6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */,
+				6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */,
+				6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */,
+				6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */,
+			);
+			path = UITableViewReuse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +401,7 @@
 				6D65BE882421FC3800EA38C8 /* ListCell.m in Sources */,
 				6D65BE00241FB79C00EA38C8 /* ViewController.m in Sources */,
 				6D65BE06241FB79C00EA38C8 /* ____.xcdatamodeld in Sources */,
+				6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */,
 				6D65BE32241FB9FC00EA38C8 /* MASCompositeConstraint.m in Sources */,
 				6D65BE39241FB9FC00EA38C8 /* ViewController+MASAdditions.m in Sources */,
 				6D65BDFA241FB79C00EA38C8 /* AppDelegate.m in Sources */,
@@ -394,6 +413,7 @@
 				6D65BE34241FB9FC00EA38C8 /* MASViewAttribute.m in Sources */,
 				6D65BE73241FDC5200EA38C8 /* ArticlePageController.m in Sources */,
 				6D65BE38241FB9FC00EA38C8 /* View+MASAdditions.m in Sources */,
+				6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */,
 				6D65BE37241FB9FC00EA38C8 /* NSArray+MASAdditions.m in Sources */,
 				6D65BE852421FBB600EA38C8 /* ListModel.m in Sources */,
 				6D65BDFD241FB79C00EA38C8 /* SceneDelegate.m in Sources */,
