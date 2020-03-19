@@ -172,6 +172,7 @@ static NSString *listCellReuseId = @"kListCell";
             return [UIColor whiteColor];
         }
     }];
+    self.thisTableView.showsVerticalScrollIndicator = NO;
     self.thisTableView.delegate = self;
     self.thisTableView.dataSource = self;
     [self.view addSubview:self.thisTableView];
@@ -220,6 +221,7 @@ static NSString *listCellReuseId = @"kListCell";
         self.sclViewBtns = [NSMutableArray arrayWithCapacity:5];
     }
     UIButton* btn =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, widthAndHeight, widthAndHeight)];
+    btn.adjustsImageWhenHighlighted = NO;
     [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [view addSubview:btn];
     [btn addTarget:self action:@selector(gotoArticleBy:) forControlEvents:UIControlEventTouchUpInside];
