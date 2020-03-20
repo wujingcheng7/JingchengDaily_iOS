@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "ListCell.h"
-#import "ListModel.h"
+#import "ListCell_HomePage.h"
+#import "ListModel_HomePage.h"
 
 
-static NSString *listCellReuseId = @"kListCell";
+static NSString *listCellReuseId = @"kListCell_HomePage";
 //OC的 category 和 extension
 @interface ViewController ()
 
@@ -27,8 +27,7 @@ static NSString *listCellReuseId = @"kListCell";
 @property (nonatomic, copy) NSArray *tabViewWebUrls;
 @property (nonatomic, strong) UIImageView *cheatingImgView;//用于视觉欺骗的图片
 @property (nonatomic, strong) UILabel *cheatingLabelView;//用于视觉欺骗的文字
-    //TODO: 这里准备做替换
-//@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataTableCellArray;//tableView动态数组(暂时不包含header内scrollview)
 
 
 
@@ -43,7 +42,6 @@ static NSString *listCellReuseId = @"kListCell";
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;//隐藏navigationBar
         //TODO: 这里准备做替换
-//    self.dataArray = [NSMutableArray array];
     [self initSomeTmpData];//init展示需要的数据
     [self initThisTableView];//init TableView (包含ScrollView)
     [self initToolbar];
@@ -61,8 +59,9 @@ static NSString *listCellReuseId = @"kListCell";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{//indexPath所指的元素被点击时的变化
     NSLog(@"第%ld区域第%ld个被点击",indexPath.section,indexPath.row);
-    NSInteger rrow= indexPath.row+3*indexPath.section;
-    ArticlePageController *APC_ptr = [[ArticlePageController alloc]initWithWebsiteAddress:self.tabViewWebUrls[rrow]];
+    ListCell_HomePage* cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString* webUrl = cell.model.webUrl;
+    ArticlePageController *APC_ptr = [[ArticlePageController alloc]initWithWebsiteAddress:webUrl];
     [self.navigationController pushViewController:APC_ptr animated:YES];
 }
 #pragma mark - 此方法既控制thisTableView也控制thisScrollView⬇️
@@ -80,20 +79,17 @@ static NSString *listCellReuseId = @"kListCell";
         CGFloat bigWidth = tableview.frame.size.width;//tableview的X长度
         CGFloat offsetX = scV.contentOffset.x;//scrollview 的offset x
         NSInteger i = (NSInteger)(offsetX)/(NSInteger)(bigWidth);// scrollview 的图片序号，从0开始
-//        UIImageView* imgView = scV.subviews[i].subviews[0];//scrollview的图片
-//        CGPoint center = imgView.center;
         if (offsetY<0) {
-//            CGFloat scale = (bigWidth-offsetY)/bigWidth;
-//            imgView.transform = CGAffineTransformMakeScale(scale, scale);
-//            imgView.center = center;
             self.cheatingImgView.frame = CGRectMake(0+offsetY/2,106,bigWidth-offsetY,bigWidth-offsetY);
+            ListModel_HomePage* tmpModel = _dataTableCellArray[i];
             if(self.cheatingImgView.tag){
-                [self.cheatingImgView setImage:[UIImage imageNamed:[NSString stringWithFormat: @"scroll_%ld.jpg",i]]];
+                [self.cheatingImgView setImage:[UIImage imageNamed:tmpModel.imgName]];
                 self.cheatingImgView.tag = 0;
             }
             self.cheatingLabelView.frame = CGRectMake(20, 406-offsetY, bigWidth, 70);
             if (self.cheatingLabelView.tag) {
-                self.cheatingLabelView.text = self.sclViewTitles[i];
+//                self.cheatingLabelView.text = self.sclViewTitles[i];
+                self.cheatingLabelView.text = tmpModel.title;
                 self.cheatingLabelView.tag = 0;
             }
         }else{//offsetY>=0
@@ -118,11 +114,20 @@ static NSString *listCellReuseId = @"kListCell";
 
 #pragma mark - 以下为TableViewDataSourceDelegate相关方法⬇️
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{//返回NSInteger，表示一共有多少section(组)数据
-    return 3;//粗暴设置为3组
+    NSInteger count = _dataTableCellArray.count - 5;
+    NSInteger n = count/3;
+    return (count%3)? (n+1): n;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{//返回NSInteger，表示对应的section(组)有多少row(行)
-    return 3;//粗暴设置为3个组都是3行
+    NSInteger sectionMax = [self numberOfSectionsInTableView:tableView] - 1;//获取section最大值=section总数-1
+    if (section<sectionMax) {//非最后一行
+        return 3;
+    }else{//最后一行
+        NSInteger count = _dataTableCellArray.count - 5;
+        return (count%3)? (count%3): 3;
+    }
+    
 }
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     //假装给section设置了时间
@@ -131,54 +136,18 @@ static NSString *listCellReuseId = @"kListCell";
     return result;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{//返回TableViewCell对象，即每一行的数据
-
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-    NSInteger rrow= indexPath.row+3*indexPath.section;
-    cell.textLabel.text = self.tabViewTitles[rrow];//设置标题
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"作者/%@",self.tabViewAuthors[rrow]];//设置作者
-    //设置右侧图片
-    cell.accessoryType=UITableViewCellAccessoryDetailButton;
-    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"tab-%ld.jpg",rrow]];
-    UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-    imgView.frame = CGRectMake(0, 0, 66, 66);
-    cell.accessoryView = imgView;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //返回UITableViewCell对象
-    
-    //TODO: 这里准备做替换
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:listCellReuseId];
-//    cell.model = self.dataArray[indexPath.row];
+    NSInteger Number = indexPath.section*3 + indexPath.row;
+    NSInteger count = _dataTableCellArray.count -5;
+    ListCell_HomePage *cell = [tableView dequeueReusableCellWithIdentifier:listCellReuseId];
+    if (Number<count && cell==nil) {//没有cell了但是却有数据可以制作cell
+        //制作cell
+        cell = [[ListCell_HomePage alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:listCellReuseId andModel:_dataTableCellArray[Number+5]];
+        NSLog(@"第%ld号cell的内容，title=%@,imgName=%@.\n",Number,cell.model.title,cell.model.imgName);
+    }
     return cell;
 }
 #pragma mark - 初始化时的一些方法⬇️
 -(void)initThisTableView{
-    /*
-     创建TableView
-     */
-    UITableView* tableViewPtr= [[UITableView alloc]initWithFrame:CGRectMake(0,106,self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStyleGrouped];
-//    [tableViewPtr mas_remakeConstraints:^(MASConstraintMaker *make){
-//        make.left.equalTo(self.view);
-//        make.right.equalTo(self.view);
-//        make.top.equalTo(self.view);
-//        make.bottom.equalTo(self.view);
-//    }];
-    self.thisTableView = tableViewPtr;
-    [self.thisTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.thisTableView.backgroundColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
-        if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-            return [UIColor blackColor];
-        }else{
-            return [UIColor whiteColor];
-        }
-    }];
-    self.thisTableView.showsVerticalScrollIndicator = NO;
-    self.thisTableView.delegate = self;
-    self.thisTableView.dataSource = self;
-    [self.view addSubview:self.thisTableView];
-    
-    [tableViewPtr registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    [tableViewPtr registerClass:[ListCell class] forCellReuseIdentifier:listCellReuseId];
     /*
      创建Scrollview
      */
@@ -197,8 +166,27 @@ static NSString *listCellReuseId = @"kListCell";
     self.thisScrollView.delegate = self;
     //添加5个轮播内容，图片+标题
     for (int i=0; i<5; i++) {//添加5个图片
-        [self addImageViewForThisScrollViewWithImage:[NSString stringWithFormat:@"scroll_%d.jpg",i] withNumber:i withTitle:self.sclViewTitles[i]];
+        ListModel_HomePage *tmpData = _dataTableCellArray[i];
+        [self addImageViewForThisScrollViewWithImage:tmpData.imgName withNumber:i withTitle:tmpData.title];
     }
+    /*
+     创建TableView
+     */
+    UITableView* tableViewPtr= [[UITableView alloc]initWithFrame:CGRectMake(0,106,self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStyleGrouped];
+    self.thisTableView = tableViewPtr;
+    [self.thisTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.thisTableView.backgroundColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+        if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            return [UIColor blackColor];
+        }else{
+            return [UIColor whiteColor];
+        }
+    }];
+    self.thisTableView.showsVerticalScrollIndicator = NO;
+//    [tableViewPtr registerClass:[ListCell_HomePage class] forCellReuseIdentifier:listCellReuseId];
+    self.thisTableView.delegate = self;
+    self.thisTableView.dataSource = self;
+    [self.view addSubview:self.thisTableView];
     /*
      ScrollView成为TableView的TableHeaderView  TableView加入self.view
      */
@@ -209,13 +197,6 @@ static NSString *listCellReuseId = @"kListCell";
     CGFloat widthAndHeight = self.view.bounds.size.width;
     //添加一个架子，用于安装图片按钮和标题
     UIView* view = [[UIView alloc]initWithFrame:CGRectOffset(self.thisScrollView.bounds, widthAndHeight*number, 0)];
-    //添加图片按钮
-//    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, widthAndHeight, widthAndHeight+0)];//
-//    imageView.bounds = CGRectMake(0, 0, widthAndHeight, widthAndHeight);//
-//    UIImage* image = [UIImage imageNamed:imageName];
-//    [imageView setImage:image];
-//    [view addSubview:imageView];
-//    imageView.center = CGPointMake(widthAndHeight/2, 0+(widthAndHeight/2));
     //添加图片按钮并且绑定事件
     if (self.sclViewBtns == nil ) {
         self.sclViewBtns = [NSMutableArray arrayWithCapacity:5];
@@ -269,30 +250,41 @@ static NSString *listCellReuseId = @"kListCell";
 }
 -(void)initSomeTmpData{
         //TODO: 这里准备做替换
-//    ListModel *model = [[ListModel alloc] init];
-//    model.title = @"";
-//    model.imageName = @"";
-//    model.author = @"";
-//    [self.dataArray addObject:model];
-    
-    self.tabViewTitles  =@[@"如果「生化危机」发生在中国，我该怎么逃生？",@"「创造力」是可以后天习得的吗？",@"斯里兰卡为什么不属于英属印度？",@"为什么美国 CDC 不建议戴口罩预防新冠肺炎？",@"人类语言各不相通，历史上第一个翻译是如何做到的？",@"红绿灯是怎么被发明出来的？",@"《红楼梦》有什么缺点或者不足？",@"宠物会察觉到人类的悲伤情绪吗？",@"如何看待同人作品的法律风险？"];
-    self.tabViewAuthors
-    =@[@"小刀不磨",@"贝塔",@"何赟",@"司马懿",@"zeno",@"穆卡",@"invalid s",@"王福瑞",@"一丁"];
-    self.sclViewTitles
-    =@[@"西方国家为什么不用瑞德西韦治疗新冠病毒患者？",@"瞎扯 · 如何正确地吐槽",@"饶毅：英国首相的「群体免疫」谎言",@"古装丧尸韩剧《王国》第二季中有哪些细思极恐的细节？",@"苹果产品中的哪些细节让你突然有感动的感觉？"];
-    self.sclViewWebUrls
-    =@[@"https://daily.zhihu.com/story/9721598",@"https://daily.zhihu.com/story/9721444",@"https://daily.zhihu.com/story/9721701",@"https://daily.zhihu.com/story/9721695",@"https://daily.zhihu.com/story/9721681"];
-    self.tabViewWebUrls
-    =@[@"https://daily.zhihu.com/story/9721181",@"https://daily.zhihu.com/story/9721174",@"https://daily.zhihu.com/story/9721045",@"https://daily.zhihu.com/story/9721110",@"https://daily.zhihu.com/story/9721029",@"https://daily.zhihu.com/story/9721100",@"https://daily.zhihu.com/story/9721063",@"https://daily.zhihu.com/story/9721053",@"https://daily.zhihu.com/story/9721127"];
-        //TODO: 这里准备做替换
-//    self.sclViewBtns = [NSMutableArray arrayWithCapacity:5];
+    _dataTableCellArray = [NSMutableArray array];//TODO: 如何复用呢？这是个问题
+    ListModel_HomePage *model_0 = [[ListModel_HomePage alloc]initWithTitle:@"西方国家为什么不用瑞德西韦治疗新冠病毒患者？" andAuthor:@"菲利普医生" andImgName:@"scroll_0.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721598"];
+    ListModel_HomePage *model_1 = [[ListModel_HomePage alloc]initWithTitle:@"瞎扯 · 如何正确地吐槽" andAuthor:@"知乎用户" andImgName:@"scroll_1.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721444"];
+    ListModel_HomePage *model_2 = [[ListModel_HomePage alloc]initWithTitle:@"饶毅：英国首相的「群体免疫」谎言" andAuthor:@"知识分子" andImgName:@"scroll_2.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721701"];
+    ListModel_HomePage *model_3 = [[ListModel_HomePage alloc]initWithTitle:@"古装丧尸韩剧《王国》第二季中有哪些细思极恐的细节？" andAuthor:@"首阳大君" andImgName:@"scroll_3.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721695"];
+    ListModel_HomePage *model_4 = [[ListModel_HomePage alloc]initWithTitle: @"苹果产品中的哪些细节让你突然有感动的感觉？"andAuthor:@"知乎用户" andImgName:@"scroll_4.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721681"];
+    [_dataTableCellArray addObject:model_0];
+    [_dataTableCellArray addObject:model_1];
+    [_dataTableCellArray addObject:model_2];
+    [_dataTableCellArray addObject:model_3];
+    [_dataTableCellArray addObject:model_4];
+    ListModel_HomePage *model_5 = [[ListModel_HomePage alloc]initWithTitle:@"如果「生化危机」发生在中国，我该怎么逃生？" andAuthor:@"小刀不磨" andImgName:@"tab-0.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721181"];
+    ListModel_HomePage *model_6 = [[ListModel_HomePage alloc]initWithTitle:@"「创造力」是可以后天习得的吗？" andAuthor:@"贝塔" andImgName:@"tab-1.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721174"];
+    ListModel_HomePage *model_7 = [[ListModel_HomePage alloc]initWithTitle:@"斯里兰卡为什么不属于英属印度？" andAuthor:@"何赟" andImgName:@"tab-2.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721045"];
+    ListModel_HomePage *model_8 = [[ListModel_HomePage alloc]initWithTitle:@"为什么美国 CDC 不建议戴口罩预防新冠肺炎？" andAuthor:@"司马懿" andImgName:@"tab-3.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721110"];
+    ListModel_HomePage *model_9 = [[ListModel_HomePage alloc]initWithTitle:@"人类语言各不相通，历史上第一个翻译是如何做到的？" andAuthor:@"zeno" andImgName:@"tab-4.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721029"];
+    ListModel_HomePage *model_10 = [[ListModel_HomePage alloc]initWithTitle:@"红绿灯是怎么被发明出来的？" andAuthor:@"穆卡" andImgName:@"tab-5.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721100"];
+    ListModel_HomePage *model_11 = [[ListModel_HomePage alloc]initWithTitle:@"《红楼梦》有什么缺点或者不足？" andAuthor:@"invalid s" andImgName:@"tab-6.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721063"];
+    ListModel_HomePage *model_12 = [[ListModel_HomePage alloc]initWithTitle:@"宠物会察觉到人类的悲伤情绪吗？" andAuthor:@"王福瑞" andImgName:@"tab-7.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721053"];
+    ListModel_HomePage *model_13 = [[ListModel_HomePage alloc]initWithTitle:@"如何看待同人作品的法律风险？" andAuthor:@"一丁" andImgName:@"tab-8.jpg" andWebUrl:@"https://daily.zhihu.com/story/9721127"];
+    [_dataTableCellArray addObject:model_5];
+    [_dataTableCellArray addObject:model_6];
+    [_dataTableCellArray addObject:model_7];
+    [_dataTableCellArray addObject:model_8];
+    [_dataTableCellArray addObject:model_9];
+    [_dataTableCellArray addObject:model_10];
+    [_dataTableCellArray addObject:model_11];
+    [_dataTableCellArray addObject:model_12];
+    [_dataTableCellArray addObject:model_13];
+   
 }
 -(void)gotoLoginPage:(id)item{
     if(item == self.userImageButton){
         NSLog(@"点击了头像！");
         LoginViewController *lg = [[LoginViewController alloc]init];
-//        lg.modalPresentationStyle = UIModalPresentationPopover;
-//        lg.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self.navigationController pushViewController:lg animated:YES];
     }
 }
@@ -305,11 +297,6 @@ static NSString *listCellReuseId = @"kListCell";
 }
 #pragma mark - Toolbar初始化方法⬇️
 -(void)initToolbar{//创建toolbar并添加元素
-    //创建toolbar
-//    self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 44, 375, 60)];
-//    self.toolbar.barStyle = UIBarStyleDefault;
-//    self.toolbar.backgroundColor = [UIColor systemBackgroundColor];
-//    [self.toolbar setShadowImage:nil forToolbarPosition:UIBarPositionTop];
     self.toolbar = [[UIView alloc]initWithFrame:CGRectMake(0, 44, 375, 60)];
     [self.view addSubview:self.toolbar];
     //添加时间label，并适配黑暗模式
