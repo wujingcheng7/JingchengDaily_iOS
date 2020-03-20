@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D4E9A4E2423C34200C6E908 /* ListModel_HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */; };
+		6D4E9A512423C36E00C6E908 /* ListCell_HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E9A502423C36E00C6E908 /* ListCell_HomePage.m */; };
 		6D65BDFA241FB79C00EA38C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BDF9241FB79C00EA38C8 /* AppDelegate.m */; };
 		6D65BDFD241FB79C00EA38C8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BDFC241FB79C00EA38C8 /* SceneDelegate.m */; };
 		6D65BE00241FB79C00EA38C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BDFF241FB79C00EA38C8 /* ViewController.m */; };
@@ -58,13 +60,15 @@
 		6D65BE7B24201AFD00EA38C8 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D65BE7724201AFD00EA38C8 /* star.png */; };
 		6D65BE7E24204C2500EA38C8 /* WebsitePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE7D24204C2500EA38C8 /* WebsitePageController.m */; };
 		6D65BE81242089E600EA38C8 /* SettingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE80242089E600EA38C8 /* SettingPageController.m */; };
-		6D65BE852421FBB600EA38C8 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE842421FBB600EA38C8 /* ListModel.m */; };
-		6D65BE882421FC3800EA38C8 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE872421FC3800EA38C8 /* ListCell.m */; };
 		6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */; };
 		6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D4E9A4C2423C34200C6E908 /* ListModel_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_HomePage.h; sourceTree = "<group>"; };
+		6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel_HomePage.m; sourceTree = "<group>"; };
+		6D4E9A4F2423C36E00C6E908 /* ListCell_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_HomePage.h; sourceTree = "<group>"; };
+		6D4E9A502423C36E00C6E908 /* ListCell_HomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell_HomePage.m; sourceTree = "<group>"; };
 		6D65BDF5241FB79C00EA38C8 /* 京城日报.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "京城日报.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D65BDF8241FB79C00EA38C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D65BDF9241FB79C00EA38C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -140,10 +144,6 @@
 		6D65BE7D24204C2500EA38C8 /* WebsitePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebsitePageController.m; sourceTree = "<group>"; };
 		6D65BE7F242089E600EA38C8 /* SettingPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPageController.h; sourceTree = "<group>"; };
 		6D65BE80242089E600EA38C8 /* SettingPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPageController.m; sourceTree = "<group>"; };
-		6D65BE832421FBB600EA38C8 /* ListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
-		6D65BE842421FBB600EA38C8 /* ListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
-		6D65BE862421FC3800EA38C8 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
-		6D65BE872421FC3800EA38C8 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_FirstSection.h; sourceTree = "<group>"; };
 		6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell_FirstSection.m; sourceTree = "<group>"; };
 		6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_FirstSection.h; sourceTree = "<group>"; };
@@ -269,8 +269,6 @@
 		6D65BE6D241FCD1400EA38C8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6D65BE832421FBB600EA38C8 /* ListModel.h */,
-				6D65BE842421FBB600EA38C8 /* ListModel.m */,
 				6D65BDFE241FB79C00EA38C8 /* ViewController.h */,
 				6D65BDFF241FB79C00EA38C8 /* ViewController.m */,
 				6D65BE6E241FCD7200EA38C8 /* LoginViewController.h */,
@@ -281,8 +279,6 @@
 				6D65BE7D24204C2500EA38C8 /* WebsitePageController.m */,
 				6D65BE7F242089E600EA38C8 /* SettingPageController.h */,
 				6D65BE80242089E600EA38C8 /* SettingPageController.m */,
-				6D65BE862421FC3800EA38C8 /* ListCell.h */,
-				6D65BE872421FC3800EA38C8 /* ListCell.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -290,6 +286,10 @@
 		6DDD967524230C6F003CF93C /* UITableViewReuse */ = {
 			isa = PBXGroup;
 			children = (
+				6D4E9A4C2423C34200C6E908 /* ListModel_HomePage.h */,
+				6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */,
+				6D4E9A4F2423C36E00C6E908 /* ListCell_HomePage.h */,
+				6D4E9A502423C36E00C6E908 /* ListCell_HomePage.m */,
 				6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */,
 				6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */,
 				6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */,
@@ -398,7 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D65BE0E241FB79D00EA38C8 /* main.m in Sources */,
-				6D65BE882421FC3800EA38C8 /* ListCell.m in Sources */,
 				6D65BE00241FB79C00EA38C8 /* ViewController.m in Sources */,
 				6D65BE06241FB79C00EA38C8 /* ____.xcdatamodeld in Sources */,
 				6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */,
@@ -412,10 +411,11 @@
 				6D65BE35241FB9FC00EA38C8 /* MASViewConstraint.m in Sources */,
 				6D65BE34241FB9FC00EA38C8 /* MASViewAttribute.m in Sources */,
 				6D65BE73241FDC5200EA38C8 /* ArticlePageController.m in Sources */,
+				6D4E9A512423C36E00C6E908 /* ListCell_HomePage.m in Sources */,
 				6D65BE38241FB9FC00EA38C8 /* View+MASAdditions.m in Sources */,
+				6D4E9A4E2423C34200C6E908 /* ListModel_HomePage.m in Sources */,
 				6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */,
 				6D65BE37241FB9FC00EA38C8 /* NSArray+MASAdditions.m in Sources */,
-				6D65BE852421FBB600EA38C8 /* ListModel.m in Sources */,
 				6D65BDFD241FB79C00EA38C8 /* SceneDelegate.m in Sources */,
 				6D65BE31241FB9FC00EA38C8 /* MASConstraintMaker.m in Sources */,
 				6D65BE7E24204C2500EA38C8 /* WebsitePageController.m in Sources */,
