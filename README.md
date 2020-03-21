@@ -7,7 +7,6 @@
   * 参考了《知乎日报》app(2020年3月)的UI
 ## 项目简介
   * 此项目为demo项目，不具备实际使用价值
-  * 屏幕适配仅适配了iphone11pro和iphoneXS
   * 愿意鼓励一下彩笔的我的话，请送个star
 ## 项目功能
   * 查看文章和打开链接
@@ -21,7 +20,4 @@
   * 使用Xcode打开项目
   * 连接虚拟机或者真机
   * 编译运行即可
-## 目录结构
-> 引用了Masonry
-> https://github.com/SnapKit/Masonry
 
