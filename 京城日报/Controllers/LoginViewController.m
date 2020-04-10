@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <Masonry/Masonry.h>
 
 @interface LoginViewController ()<UITextViewDelegate>
 @property (strong, nonatomic) UIButton *backBtn;
@@ -26,8 +27,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //标题和提示
-    _Title = [[UILabel alloc]initWithFrame:CGRectMake(0, 228, 375, 30)];
-    _tint = [[UILabel alloc]initWithFrame:CGRectMake(0, 267, 375, 21)];
+//    _Title = [[UILabel alloc]initWithFrame:CGRectMake(0, 228, 375, 30)];
+//    _tint = [[UILabel alloc]initWithFrame:CGRectMake(0, 267, 375, 21)];
+    _Title = [[UILabel alloc]initWithFrame:CGRectZero];
+    _tint = [[UILabel alloc]initWithFrame:CGRectZero];
     _Title.text = @"登录京城日报";
     _tint.text = @"选择登录方式";
     _Title.font = [UIFont boldSystemFontOfSize:24];
@@ -36,8 +39,21 @@
     _Title.textColor = [UIColor blackColor];
     _Title.textAlignment = NSTextAlignmentCenter;
     _tint.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:_Title];
+    [self.view addSubview:_tint];
+    [_Title mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.top.mas_equalTo(self.view.mas_top).offset(228);
+        make.height.mas_equalTo(30);
+    }];
+    [_tint mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.top.mas_equalTo(_Title.mas_bottom).mas_offset(9);
+        make.height.mas_equalTo(21);
+    }];
     //富文本初始化 可点击
-    _protocolText = [[UITextView alloc]initWithFrame:CGRectMake(50, 368, 325, 24)];
+//    _protocolText = [[UITextView alloc]initWithFrame:CGRectMake(50, 368, 325, 24)];
+    _protocolText = [[UITextView alloc]initWithFrame:CGRectZero];
     _protocolText.textAlignment = NSTextAlignmentCenter;
     _protocolText.editable = NO;
     _protocolText.scrollEnabled =NO;
@@ -59,20 +75,47 @@
     [mastring addAttribute:NSLinkAttributeName value:valueString2 range:rang2];
     [mastring addAttribute:NSLinkAttributeName value:valueString4 range:rang4];
     _protocolText.attributedText = mastring;
+    [self.view addSubview:_protocolText];
+    [_protocolText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(368);
+        make.height.mas_equalTo(24);
+    }];
     //按钮初始化
-    _zhihuBtn = [[UIButton alloc]initWithFrame:CGRectMake(100+15, 308, 50, 50)];
-    _weiboBtn = [[UIButton alloc]initWithFrame:CGRectMake(225-15,308, 50, 50)];
+//    _zhihuBtn = [[UIButton alloc]initWithFrame:CGRectMake(100+15, 308, 50, 50)];
+//    _weiboBtn = [[UIButton alloc]initWithFrame:CGRectMake(225-15,308, 50, 50)];
+    _zhihuBtn = [[UIButton alloc]initWithFrame:CGRectZero];
+    _weiboBtn = [[UIButton alloc]initWithFrame:CGRectZero];
     _backBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 64, 20, 20)];
-    _daynightBtn = [[UIButton alloc]initWithFrame:CGRectMake(100-10, 608, 50, 50)];
-    _settingBtn = [[UIButton alloc]initWithFrame:CGRectMake(225+10, 608, 50, 50)];
+//    _daynightBtn = [[UIButton alloc]initWithFrame:CGRectMake(100-10, 608, 50, 50)];
+//    _settingBtn = [[UIButton alloc]initWithFrame:CGRectMake(225+10, 608, 50, 50)];
+    _daynightBtn = [[UIButton alloc]initWithFrame:CGRectZero];
+    _settingBtn = [[UIButton alloc]initWithFrame:CGRectZero];
     [self.view addSubview:_zhihuBtn];
+    [_zhihuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.mas_equalTo(self.view.mas_centerX).offset(-15);
+        make.top.mas_equalTo(self.view.mas_top).offset(308);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
     [self.view addSubview:_weiboBtn];
-    [self.view addSubview:_Title];
-    [self.view addSubview:_tint];
+    [_weiboBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view.mas_centerX).offset(15);
+        make.top.mas_equalTo(_zhihuBtn.mas_top);
+        make.size.mas_equalTo(_zhihuBtn);
+    }];
     [self.view addSubview:_backBtn];
     [self.view addSubview:_daynightBtn];
+    [_daynightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.mas_equalTo(self.view.mas_centerX).offset(-30);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-200);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
     [self.view addSubview:_settingBtn];
-    [self.view addSubview:_protocolText];
+    [_settingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view.mas_centerX).offset(30);
+        make.bottom.mas_equalTo(_daynightBtn.mas_bottom);
+        make.size.mas_equalTo(_daynightBtn);
+    }];
     [_zhihuBtn setImage:[UIImage imageNamed:@"zhihu.png"] forState:UIControlStateNormal];
     [_zhihuBtn addTarget:self action:@selector(clickedButtonIs:) forControlEvents:UIControlEventTouchUpInside];
     [_weiboBtn setImage:[UIImage imageNamed:@"weibo.png"] forState:UIControlStateNormal];
