@@ -303,7 +303,8 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     [self.view addSubview:self.toolbar];
     [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(44);
+//        make.top.mas_equalTo(self.view.mas_top).mas_offset(44);
+        make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop);
         make.width.mas_equalTo(self.view.mas_width);
         make.height.mas_equalTo(60);
     }];
