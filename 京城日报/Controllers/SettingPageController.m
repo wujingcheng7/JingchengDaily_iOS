@@ -75,6 +75,10 @@ static NSString *listCellFirstReuseId = @"kListCellFirst";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{//indexPath所指的元素被点击时的变化
     NSLog(@"第%ld区域第%ld个被点击",indexPath.section,indexPath.row);
+    if (indexPath.section == 2 && indexPath.row == 0) {//第三组第1行
+        NSString *strUrl = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app"];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:strUrl]];
+    }
 //    NSInteger rrow= indexPath.row+3*indexPath.section;
 }
 #pragma mark - 以下为TableViewDataSourceDelegate相关方法⬇️

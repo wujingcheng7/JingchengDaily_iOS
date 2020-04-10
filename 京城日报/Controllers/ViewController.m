@@ -43,9 +43,10 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     NSLog(@"--获取到以下数据:\n----屏幕宽度：%lf\n----屏幕高度：%lf\n",Wujingcheng7_iPhoneScreenWidth,Wujingcheng7_iPhoneScreenHeight);
     self.navigationController.navigationBar.hidden = YES;//隐藏navigationBar
         //TODO: 这里准备做替换
-    [self initSomeTmpData];//init展示需要的数据
-    [self initThisTableView];//init TableView (包含ScrollView)
+    [self initSomeTmpData];//init展示需要的数
     [self initToolbar];
+    [self initThisTableView];//init TableView (包含ScrollView)
+//    [self initToolbar];
     [self initCheatingThings];//欺骗性内容，用于图片拉伸
 }
 #pragma mark - tableViewDelegate相关方法⬇️
@@ -81,13 +82,14 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
         CGFloat offsetX = scV.contentOffset.x;//scrollview 的offset x
         NSInteger i = (NSInteger)(offsetX)/(NSInteger)(bigWidth);// scrollview 的图片序号，从0开始
         if (offsetY<0) {
-            self.cheatingImgView.frame = CGRectMake(0+offsetY/2,106,bigWidth-offsetY,bigWidth-offsetY);
+            CGFloat toolbarBottomY = self.toolbar.frame.origin.y + self.toolbar.frame.size.height;
+            self.cheatingImgView.frame = CGRectMake(0+offsetY/2,toolbarBottomY,bigWidth-offsetY,bigWidth-offsetY);
             ListModel_HomePage* tmpModel = _dataTableCellArray[i];
             if(self.cheatingImgView.tag){
                 [self.cheatingImgView setImage:[UIImage imageNamed:tmpModel.imgName]];
                 self.cheatingImgView.tag = 0;
             }
-            self.cheatingLabelView.frame = CGRectMake(20, 406-offsetY, bigWidth, 70);
+            self.cheatingLabelView.frame = CGRectMake(20, toolbarBottomY+300-offsetY, bigWidth, 70);
             if (self.cheatingLabelView.tag) {
 //                self.cheatingLabelView.text = self.sclViewTitles[i];
                 self.cheatingLabelView.text = tmpModel.title;
@@ -173,7 +175,8 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     /*
      创建TableView
      */
-    UITableView* tableViewPtr= [[UITableView alloc]initWithFrame:CGRectMake(0,106,self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStyleGrouped];
+//    UITableView* tableViewPtr= [[UITableView alloc]initWithFrame:CGRectMake(0,106,self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStyleGrouped];
+    UITableView* tableViewPtr =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.thisTableView = tableViewPtr;
     [self.thisTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.thisTableView.backgroundColor = [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
@@ -188,6 +191,12 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     self.thisTableView.delegate = self;
     self.thisTableView.dataSource = self;
     [self.view addSubview:self.thisTableView];
+    [self.thisTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.toolbar.mas_bottom);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.leading.mas_equalTo(self.view.mas_leading);
+        make.trailing.mas_equalTo(self.view.mas_trailing);
+    }];
     /*
      ScrollView成为TableView的TableHeaderView  TableView加入self.view
      */
@@ -356,10 +365,16 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     }
     [self.toolbar addSubview:labelTitle];
     //添加头像，默认为刘看山
-    self.userImageButton = [[UIButton alloc]initWithFrame:CGRectMake(325, 10, 40, 40)];
+//    self.userImageButton = [[UIButton alloc]initWithFrame:CGRectMake(325, 10, 40, 40)];
+    self.userImageButton = [[UIButton alloc]init];
     UIImage* imageDefaultUser = [UIImage imageNamed:@"liukanshan_circle.png"];
     [self.userImageButton setImage:imageDefaultUser forState:UIControlStateNormal];
     [self.toolbar addSubview:self.userImageButton];
+    [_userImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+        make.centerY.mas_equalTo(self.toolbar);
+        make.trailing.mas_equalTo(self.toolbar).mas_offset(-14);
+    }];
     //头像添加点击事件
     [self.userImageButton addTarget:self action:@selector(gotoLoginPage:) forControlEvents:UIControlEventTouchUpInside];
 }
