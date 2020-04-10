@@ -67,11 +67,11 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
 #pragma mark - 此方法既控制thisTableView也控制thisScrollView⬇️
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.thisScrollView) {//如果thisScrollView调用
-            CGFloat offsetX = scrollView.contentOffset.x;
-            if (((NSInteger)offsetX)%375 == 0) {//横向移动
-                NSInteger number = (NSInteger)(offsetX/375);
-                NSLog(@"当前scrollview到了第%ld个子元素(从0计数)",number);
-            }
+//            CGFloat offsetX = scrollView.contentOffset.x;
+//            if (((NSInteger)offsetX)%375 == 0) {//横向移动
+//                NSInteger number = (NSInteger)(offsetX/375);
+//                NSLog(@"当前scrollview到了第%ld个子元素(从0计数)",number);
+//            }
     }else if (scrollView == self.thisTableView){//如果thisTableView调用
         UITableView* tableview = (UITableView*)scrollView;
         UIScrollView* scV =self.thisScrollView;//获取横向滚动scrollview
@@ -142,7 +142,7 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
     if (Number<count && cell==nil) {//没有cell了但是却有数据可以制作cell
         //制作cell
         cell = [[ListCell_HomePage alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:listCellReuseId andModel:_dataTableCellArray[Number+5]];
-        NSLog(@"第%ld号cell的内容，title=%@,imgName=%@.\n",Number,cell.model.title,cell.model.imgName);
+//        NSLog(@"第%ld号cell的内容，title=%@,imgName=%@.\n",Number,cell.model.title,cell.model.imgName);
     }
     return cell;
 }

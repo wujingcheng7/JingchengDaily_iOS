@@ -50,6 +50,7 @@
 		6D65BE7B24201AFD00EA38C8 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D65BE7724201AFD00EA38C8 /* star.png */; };
 		6D65BE7E24204C2500EA38C8 /* WebsitePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE7D24204C2500EA38C8 /* WebsitePageController.m */; };
 		6D65BE81242089E600EA38C8 /* SettingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BE80242089E600EA38C8 /* SettingPageController.m */; };
+		6DAD9FE524404F6B00B25221 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD9FE424404F6B00B25221 /* Utility.m */; };
 		6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */; };
 		6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,8 @@
 		6D65BE7F242089E600EA38C8 /* SettingPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPageController.h; sourceTree = "<group>"; };
 		6D65BE80242089E600EA38C8 /* SettingPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPageController.m; sourceTree = "<group>"; };
 		6DAD9FD824404CE100B25221 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		6DAD9FE324404F6B00B25221 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		6DAD9FE424404F6B00B25221 /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_FirstSection.h; sourceTree = "<group>"; };
 		6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell_FirstSection.m; sourceTree = "<group>"; };
 		6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_FirstSection.h; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 				6D65BE6D241FCD1400EA38C8 /* Controllers */,
 				6DDD967524230C6F003CF93C /* UITableViewReuse */,
 				6D65BE16241FB9A700EA38C8 /* ImageSources */,
+				6DAD9FE224404F0E00B25221 /* Utils */,
 			);
 			path = "京城日报";
 			sourceTree = "<group>";
@@ -254,6 +258,15 @@
 				6DAD9FE024404CE100B25221 /* libPods-京城日报.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6DAD9FE224404F0E00B25221 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD9FE324404F6B00B25221 /* Utility.h */,
+				6DAD9FE424404F6B00B25221 /* Utility.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		6DDD967524230C6F003CF93C /* UITableViewReuse */ = {
@@ -432,6 +445,7 @@
 				6D65BE00241FB79C00EA38C8 /* ViewController.m in Sources */,
 				6D65BE06241FB79C00EA38C8 /* ____.xcdatamodeld in Sources */,
 				6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */,
+				6DAD9FE524404F6B00B25221 /* Utility.m in Sources */,
 				6D65BDFA241FB79C00EA38C8 /* AppDelegate.m in Sources */,
 				6D65BE81242089E600EA38C8 /* SettingPageController.m in Sources */,
 				6D65BE70241FCD7200EA38C8 /* LoginViewController.m in Sources */,
