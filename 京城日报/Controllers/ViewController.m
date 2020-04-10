@@ -10,7 +10,7 @@
 #import "ListCell_HomePage.h"
 #import "ListModel_HomePage.h"
 #import <Masonry/Masonry.h>
-
+#import "Utility.h"
 static NSString *listCellReuseId = @"kListCell_HomePage";
 //OC的 category 和 extension
 @interface ViewController ()
@@ -40,6 +40,7 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"--获取到以下数据:\n----屏幕宽度：%lf\n----屏幕高度：%lf\n",Wujingcheng7_iPhoneScreenWidth,Wujingcheng7_iPhoneScreenHeight);
     self.navigationController.navigationBar.hidden = YES;//隐藏navigationBar
         //TODO: 这里准备做替换
     [self initSomeTmpData];//init展示需要的数据
