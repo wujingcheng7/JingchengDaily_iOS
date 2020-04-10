@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "ListCell_HomePage.h"
 #import "ListModel_HomePage.h"
-
+#import <Masonry/Masonry.h>
 
 static NSString *listCellReuseId = @"kListCell_HomePage";
 //OC的 category 和 extension
@@ -297,8 +297,15 @@ static NSString *listCellReuseId = @"kListCell_HomePage";
 }
 #pragma mark - Toolbar初始化方法⬇️
 -(void)initToolbar{//创建toolbar并添加元素
-    self.toolbar = [[UIView alloc]initWithFrame:CGRectMake(0, 44, 375, 60)];
+//    self.toolbar = [[UIView alloc]initWithFrame:CGRectMake(0, 44, 375, 60)];
+    self.toolbar = [[UIView alloc]initWithFrame:CGRectZero];
     [self.view addSubview:self.toolbar];
+    [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(44);
+        make.width.mas_equalTo(self.view.mas_width);
+        make.height.mas_equalTo(60);
+    }];
     //添加时间label，并适配黑暗模式
     UILabel* labelTimeDay = [[UILabel alloc]initWithFrame:CGRectMake(14, 6, 40, 24)];
     UILabel* labelTimeMon = [[UILabel alloc]initWithFrame:CGRectMake(14, 24, 40, 36)];

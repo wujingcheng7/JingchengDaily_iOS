@@ -54,7 +54,25 @@
 		6DDD9684242316EE003CF93C /* ListModel_FirstSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6DAD9FDD24404CE100B25221 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DAD9FD824404CE100B25221 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FFED36A657123030ABB700256D73F15;
+			remoteInfo = Masonry;
+		};
+		6DAD9FDF24404CE100B25221 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DAD9FD824404CE100B25221 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB20D573919A4BDD1B571E0CC2EFE402;
+			remoteInfo = "Pods-京城日报";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		218FEEB44A9DE9E593B2FB4D /* Pods-京城日报.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-京城日报.release.xcconfig"; path = "Target Support Files/Pods-京城日报/Pods-京城日报.release.xcconfig"; sourceTree = "<group>"; };
 		6D4E9A4C2423C34200C6E908 /* ListModel_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_HomePage.h; sourceTree = "<group>"; };
 		6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel_HomePage.m; sourceTree = "<group>"; };
 		6D4E9A4F2423C36E00C6E908 /* ListCell_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_HomePage.h; sourceTree = "<group>"; };
@@ -109,10 +127,13 @@
 		6D65BE7D24204C2500EA38C8 /* WebsitePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebsitePageController.m; sourceTree = "<group>"; };
 		6D65BE7F242089E600EA38C8 /* SettingPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPageController.h; sourceTree = "<group>"; };
 		6D65BE80242089E600EA38C8 /* SettingPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPageController.m; sourceTree = "<group>"; };
+		6DAD9FD824404CE100B25221 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		6DDD967F242316C8003CF93C /* ListCell_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_FirstSection.h; sourceTree = "<group>"; };
 		6DDD9680242316C8003CF93C /* ListCell_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell_FirstSection.m; sourceTree = "<group>"; };
 		6DDD9682242316EE003CF93C /* ListModel_FirstSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_FirstSection.h; sourceTree = "<group>"; };
 		6DDD9683242316EE003CF93C /* ListModel_FirstSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel_FirstSection.m; sourceTree = "<group>"; };
+		716E1F84476A5665F0EA195C /* Pods-京城日报.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-京城日报.debug.xcconfig"; path = "Target Support Files/Pods-京城日报/Pods-京城日报.debug.xcconfig"; sourceTree = "<group>"; };
+		F5664D8E9D02C339D55D0178 /* libPods-京城日报.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-京城日报.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +147,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0626BEEDB114174C2CE7ADDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				716E1F84476A5665F0EA195C /* Pods-京城日报.debug.xcconfig */,
+				218FEEB44A9DE9E593B2FB4D /* Pods-京城日报.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6D65BDEC241FB79C00EA38C8 = {
 			isa = PBXGroup;
 			children = (
 				6D65BDF7241FB79C00EA38C8 /* 京城日报 */,
 				6D65BDF6241FB79C00EA38C8 /* Products */,
+				0626BEEDB114174C2CE7ADDD /* Pods */,
+				AD71433C8677DF630E3933C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,6 +247,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		6DAD9FD924404CE100B25221 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD9FDE24404CE100B25221 /* libMasonry.a */,
+				6DAD9FE024404CE100B25221 /* libPods-京城日报.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6DDD967524230C6F003CF93C /* UITableViewReuse */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +271,15 @@
 			path = UITableViewReuse;
 			sourceTree = "<group>";
 		};
+		AD71433C8677DF630E3933C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD9FD824404CE100B25221 /* Pods.xcodeproj */,
+				F5664D8E9D02C339D55D0178 /* libPods-京城日报.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -237,6 +287,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D65BE11241FB79D00EA38C8 /* Build configuration list for PBXNativeTarget "京城日报" */;
 			buildPhases = (
+				514158D706148272897E5E87 /* [CP] Check Pods Manifest.lock */,
 				6D65BDF1241FB79C00EA38C8 /* Sources */,
 				6D65BDF2241FB79C00EA38C8 /* Frameworks */,
 				6D65BDF3241FB79C00EA38C8 /* Resources */,
@@ -275,12 +326,35 @@
 			mainGroup = 6D65BDEC241FB79C00EA38C8;
 			productRefGroup = 6D65BDF6241FB79C00EA38C8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6DAD9FD924404CE100B25221 /* Products */;
+					ProjectRef = 6DAD9FD824404CE100B25221 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6D65BDF4241FB79C00EA38C8 /* 京城日报 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6DAD9FDE24404CE100B25221 /* libMasonry.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMasonry.a;
+			remoteRef = 6DAD9FDD24404CE100B25221 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6DAD9FE024404CE100B25221 /* libPods-京城日报.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-京城日报.a";
+			remoteRef = 6DAD9FDF24404CE100B25221 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6D65BDF3241FB79C00EA38C8 /* Resources */ = {
@@ -323,6 +397,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		514158D706148272897E5E87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-京城日报-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D65BDF1241FB79C00EA38C8 /* Sources */ = {
@@ -479,6 +578,7 @@
 		};
 		6D65BE12241FB79D00EA38C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 716E1F84476A5665F0EA195C /* Pods-京城日报.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -496,6 +596,7 @@
 		};
 		6D65BE13241FB79D00EA38C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218FEEB44A9DE9E593B2FB4D /* Pods-京城日报.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
