@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D15DC2F245032710004739C /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D15DC2E245032710004739C /* UIImageView+CornerRadius.m */; };
 		6D4E9A4E2423C34200C6E908 /* ListModel_HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */; };
 		6D4E9A512423C36E00C6E908 /* ListCell_HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E9A502423C36E00C6E908 /* ListCell_HomePage.m */; };
 		6D65BDFA241FB79C00EA38C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D65BDF9241FB79C00EA38C8 /* AppDelegate.m */; };
@@ -74,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		218FEEB44A9DE9E593B2FB4D /* Pods-京城日报.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-京城日报.release.xcconfig"; path = "Target Support Files/Pods-京城日报/Pods-京城日报.release.xcconfig"; sourceTree = "<group>"; };
+		6D15DC2B245032710004739C /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
+		6D15DC2E245032710004739C /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
 		6D4E9A4C2423C34200C6E908 /* ListModel_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListModel_HomePage.h; sourceTree = "<group>"; };
 		6D4E9A4D2423C34200C6E908 /* ListModel_HomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListModel_HomePage.m; sourceTree = "<group>"; };
 		6D4E9A4F2423C36E00C6E908 /* ListCell_HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell_HomePage.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 		6DAD9FE224404F0E00B25221 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6D15DC2B245032710004739C /* UIImageView+CornerRadius.h */,
+				6D15DC2E245032710004739C /* UIImageView+CornerRadius.m */,
 				6DAD9FE324404F6B00B25221 /* Utility.h */,
 				6DAD9FE424404F6B00B25221 /* Utility.m */,
 			);
@@ -455,6 +460,7 @@
 				6DDD9681242316C8003CF93C /* ListCell_FirstSection.m in Sources */,
 				6D65BDFD241FB79C00EA38C8 /* SceneDelegate.m in Sources */,
 				6D65BE7E24204C2500EA38C8 /* WebsitePageController.m in Sources */,
+				6D15DC2F245032710004739C /* UIImageView+CornerRadius.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
